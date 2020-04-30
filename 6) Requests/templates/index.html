@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+
+<html>
+
+	<head>
+
+		<link rel = 'stylesheet' type = 'text/css' href = '{{url_for("static", filename = "style.css")}}' />
+		
+	</head>
+
+	<body>
+
+		<h1 id = 'title'> My Blogging Website | {{user.name}} </h1>
+
+		{% if user.name == 'Jasamrit' %}
+		<h2> Welcome Admin </h2>
+
+		{% else %}
+		<h3> Welcome {{user.name}} </h3>
+
+		{% endif %}
+
+
+		{% for i in user.posts %}
+
+			<div class = 'post'>
+
+				<h3> {{i.Title}} </h3>
+				<p> {{i.Content}} </p>
+				<p> <font size="2"> {{i.Date}} </font> </p>
+
+			</div>
+
+			<br>
+
+		{% endfor %}
+
+		<div class = 'post'>
+
+			<div id = 'add_post'>
+
+				<label> Title: </label>
+				<input type = 'text' name = 'Title'>
+
+				<label> Content: </label>
+				<input type = 'text' name = 'Content'>
+
+				<input type = 'submit' onclick = 'send_form()'>
+
+			</div>
+
+		</div>
+
+
+		<script type = 'text/javascript' src = '{{url_for("static", filename = "script.js")}}'> </script>
+
+	</body>
+
+</html>
